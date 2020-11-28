@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="top_margin">100dp</dimen>
+    <dimen name="login_bottom_margin">50dp</dimen>
+    <dimen name="login_vertical_field_margin">25dp</dimen>
+    <dimen name="login_field_padding_vertical">8dp</dimen>
+    <dimen name="login_field_padding_left">20dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+</resources>
