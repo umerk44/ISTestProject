@@ -13,4 +13,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         collapsingToolbar.title = title
     }
+
+    fun setActionbarTitle(title: String) {
+        collapsingToolbar.title = title
+    }
 }

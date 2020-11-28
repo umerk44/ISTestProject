@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.`is`.istestproject.network.ISServiceBuilder
 import com.test.istestprojectapplication.R
 import com.test.istestprojectapplication.core.LoginViewModelFactory
@@ -24,8 +25,7 @@ class LoginFragment : Fragment() {
     private val TAG: String? = LoginFragment::class.simpleName
 
     private val viewModel : LoginViewModel by viewModels {
-        LoginViewModelFactory(
-            ISLoginRepository(ISServiceBuilder(SessionManager(requireContext())).getLoginService()),
+        LoginViewModelFactory(ISLoginRepository(ISServiceBuilder(SessionManager(requireContext())).getLoginService()),
             SessionManager(requireContext()))
     }
 
@@ -56,6 +56,7 @@ class LoginFragment : Fragment() {
 
         if( validate(userName, password) )
             viewModel.login(userName, password)
+
     }
 
     private fun validate(userName: String, _password: String) : Boolean{
@@ -81,7 +82,6 @@ class LoginFragment : Fragment() {
     }
 
     private fun observeLoginCall(remoteCallState: RemoteCallState<String>) {
-        Log.d(TAG, "State : "+remoteCallState.toString())
         when(remoteCallState) {
             is RemoteCallState.Loading ->  {
                 disableLoginButton()
@@ -111,9 +111,7 @@ class LoginFragment : Fragment() {
 
     private fun onLoginSuccess() {
         Log.d(TAG, "onLoginSuccess")
-//        Navigation.findNavController(R.id.nav_host).navigate()
-//        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
-        Log.d(TAG, "Open welcome fragment!")
+        findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
     }
 
     private fun showToast(message: String) {

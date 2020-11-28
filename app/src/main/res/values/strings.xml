@@ -4,4 +4,5 @@
     <string name="forgot">Forgot Password?</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="view_item_detail">View Item Detail</string>
 </resources>
