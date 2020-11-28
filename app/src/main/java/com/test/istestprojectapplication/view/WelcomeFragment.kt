@@ -24,11 +24,12 @@ class WelcomeFragment() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val userName = SessionManager(requireContext()).getUserName()
-        (activity as MainActivity).setActionbarTitle("Welcome, $userName")
+        userName?.let { (activity as MainActivity).setWelcomeActionBar(it) }
         viewItems.setOnClickListener { openProductListingFragment() }
     }
 
     private fun openProductListingFragment() {
+        findNavController().navigate(R.id.action_welcomeFragment_to_productsFragment)
     }
 
 }

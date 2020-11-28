@@ -5,4 +5,5 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="view_item_detail">View Item Detail</string>
+    <string name="detail_of_item_list">Details of listed item</string>
 </resources>

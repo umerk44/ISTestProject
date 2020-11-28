@@ -21,6 +21,14 @@
         android:name="com.test.istestprojectapplication.view.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.test.istestprojectapplication.view.ProductsFragment"
+        android:label="fragment_products"
+        tools:layout="@layout/fragment_products" />
 
 </navigation>

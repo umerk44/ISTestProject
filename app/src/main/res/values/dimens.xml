@@ -6,4 +6,8 @@
     <dimen name="login_field_padding_vertical">8dp</dimen>
     <dimen name="login_field_padding_left">20dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="product_item_margin">15dp</dimen>
+    <dimen name="prodcut_item_card_margin">10dp</dimen>
+    <dimen name="prodcut_item_card_margin_vertical">10dp</dimen>
+    <dimen name="prodcut_item_card_margin_horizontal">20dp</dimen>
 </resources>
