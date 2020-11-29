@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import com.`is`.istestproject.network.ISServiceBuilder
+import com.test.istestprojectapplication.network.ISServiceBuilder
 import com.test.istestprojectapplication.R
 import com.test.istestprojectapplication.core.LoginViewModelFactory
 import com.test.istestprojectapplication.core.RemoteCallState

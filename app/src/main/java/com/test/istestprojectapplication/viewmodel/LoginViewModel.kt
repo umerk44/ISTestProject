@@ -30,7 +30,7 @@ class LoginViewModel(private val loginRepository: ISLoginRepository,
                     RemoteCallState.success("Success")
                 } else  RemoteCallState.failed(it.error)
             }, {
-               login.value = RemoteCallState.failed(it.message!!)
+               login.value = RemoteCallState.failed(it.localizedMessage)
             })
 
         )
