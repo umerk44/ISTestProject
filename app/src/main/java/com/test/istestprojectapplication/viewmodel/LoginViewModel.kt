@@ -25,8 +25,8 @@ class LoginViewModel(private val loginRepository: ISLoginRepository,
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe ({
                 login.value = if( it.error == null ) {
-//                    sessionManager.saveToken(it.token)
-//                    sessionManager.saveUserName(userName)
+                    sessionManager.saveToken(it.token)
+                    sessionManager.saveUserName(userName)
                     RemoteCallState.success("Success")
                 } else  RemoteCallState.failed(it.error)
             }, {

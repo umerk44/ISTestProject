@@ -1,9 +1,11 @@
-package com.`is`.istestproject.network
+package com.test.istestprojectapplication.network
 
 import android.content.Context
+import com.test.istestprojectapplication.core.NetworkInterceptor
 import com.test.istestprojectapplication.core.SessionManager
 import com.test.istestprojectapplication.data.remote.Constant
 import com.test.istestprojectapplication.data.remote.api.ISLoginService
+import com.test.istestprojectapplication.data.remote.api.ProductsService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -24,5 +26,12 @@ class ISServiceBuilder(private val sessionManager: SessionManager) {
             .client(clientBuilder.build())
             .build()
             .create(ISLoginService::class.java)
+    }
+
+    fun getProductsService(): ProductsService {
+        return retrofit
+            .client(clientBuilder.addInterceptor(NetworkInterceptor(sessionManager)).build())
+            .build()
+            .create(ProductsService::class.java)
     }
 }
