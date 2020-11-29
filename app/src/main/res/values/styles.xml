@@ -58,6 +58,7 @@
 
 
     <style name="welcome_user">
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">25sp</item>
     </style>

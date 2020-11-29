@@ -16,6 +16,7 @@ import com.test.istestprojectapplication.R
 import com.test.istestprojectapplication.core.ProductsViewModelFactory
 import com.test.istestprojectapplication.core.RemoteCallState
 import com.test.istestprojectapplication.core.SessionManager
+import com.test.istestprojectapplication.data.local.ISDatabase
 import com.test.istestprojectapplication.data.remote.model.ProductListResponse
 import com.test.istestprojectapplication.data.repository.ProductsRepository
 import com.test.istestprojectapplication.viewmodel.ProductsViewModel
@@ -25,7 +26,8 @@ import kotlinx.android.synthetic.main.fragment_products.*
 class ProductsFragment : Fragment() {
 
     private val viewModel : ProductsViewModel by viewModels {
-        ProductsViewModelFactory(ProductsRepository(ISServiceBuilder(SessionManager(requireContext())).getProductsService()))
+        ProductsViewModelFactory(ProductsRepository(ISServiceBuilder(SessionManager(requireContext())).getProductsService(),
+                                  ISDatabase.getInstance(requireContext()).getProductDao()))
     }
 
     private val productListAdapter : ProductListAdapter = ProductListAdapter(emptyList())
@@ -61,7 +63,7 @@ class ProductsFragment : Fragment() {
              is RemoteCallState.Loading -> progress.visibility = VISIBLE
              is RemoteCallState.Failed -> {
                  progress.visibility = GONE
-                 showToast(callState.message)
+                 viewModel.getProductsFromDb()
              }
              is RemoteCallState.Success -> {
                  progress.visibility = GONE
