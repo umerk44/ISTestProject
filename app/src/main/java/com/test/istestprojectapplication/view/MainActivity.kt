@@ -6,8 +6,10 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import com.google.android.material.appbar.AppBarLayout
 import com.test.istestprojectapplication.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private var userName : String? = null

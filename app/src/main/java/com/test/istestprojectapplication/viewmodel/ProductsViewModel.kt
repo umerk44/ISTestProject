@@ -1,15 +1,20 @@
 package com.test.istestprojectapplication.viewmodel
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.test.istestprojectapplication.core.RemoteCallState
 import com.test.istestprojectapplication.data.remote.model.ProductListResponse
 import com.test.istestprojectapplication.data.repository.ProductsRepository
 import com.test.istestprojectapplication.model.Product
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
+import javax.inject.Provider
 
-class ProductsViewModel(private val productsRepository: ProductsRepository) : BaseViewModel() {
+class ProductsViewModel @ViewModelInject constructor(private val productsRepository: ProductsRepository) : BaseViewModel() {
 
     private val products = MutableLiveData<RemoteCallState<ProductListResponse>>()
     val productsView : LiveData<RemoteCallState<ProductListResponse>>
@@ -52,4 +57,6 @@ class ProductsViewModel(private val productsRepository: ProductsRepository) : Ba
                 products.value = RemoteCallState.success(productListResponse)
             }, {}))
     }
+
+
 }

@@ -6,11 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.test.istestprojectapplication.data.local.dao.ProductDao
 import com.test.istestprojectapplication.model.Product
+import dagger.Module
+import dagger.Provides
 
 @Database(
   entities = [Product::class],
   version = 1
 )
+
 abstract class ISDatabase : RoomDatabase() {
 
     abstract fun getProductDao() : ProductDao
@@ -21,6 +24,7 @@ abstract class ISDatabase : RoomDatabase() {
 
         @Volatile
         private var INSTANCE: ISDatabase? = null
+
 
         fun getInstance(context: Context): ISDatabase {
             val tempInstance = INSTANCE

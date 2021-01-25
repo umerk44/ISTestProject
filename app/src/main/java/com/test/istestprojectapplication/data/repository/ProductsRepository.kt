@@ -8,9 +8,10 @@ import com.test.istestprojectapplication.model.Product
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
+import javax.inject.Inject
 
-class ProductsRepository(private val productsService: ProductsService,
-private val productDao: ProductDao) {
+class ProductsRepository @Inject constructor (private val productsService: ProductsService,
+                         private val productDao: ProductDao) {
 
     fun getProducts() : Observable<ProductListResponse> {
         return productsService.getProducts()

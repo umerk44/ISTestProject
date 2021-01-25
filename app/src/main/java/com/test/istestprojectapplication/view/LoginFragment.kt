@@ -8,26 +8,25 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.test.istestprojectapplication.network.ISServiceBuilder
+import com.test.istestprojectapplication.ISApplication
 import com.test.istestprojectapplication.R
-import com.test.istestprojectapplication.core.LoginViewModelFactory
 import com.test.istestprojectapplication.core.RemoteCallState
-import com.test.istestprojectapplication.core.SessionManager
-import com.test.istestprojectapplication.data.repository.ISLoginRepository
 import com.test.istestprojectapplication.viewmodel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_login.*
+import javax.inject.Inject
 
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private val TAG: String? = LoginFragment::class.simpleName
 
-    private val viewModel : LoginViewModel by viewModels {
-        LoginViewModelFactory(ISLoginRepository(ISServiceBuilder(SessionManager(requireContext())).getLoginService()),
-            SessionManager(requireContext()))
-    }
+    private val  viewModel : LoginViewModel by viewModels()
+
+
 
 
     override fun onCreateView(
@@ -40,6 +39,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         setUpObserver()
         setUpListener()

@@ -1,16 +1,21 @@
 package com.test.istestprojectapplication.viewmodel
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.test.istestprojectapplication.core.RemoteCallState
 import com.test.istestprojectapplication.core.SessionManager
 import com.test.istestprojectapplication.data.repository.ISLoginRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
+import javax.inject.Provider
 
 
-class LoginViewModel(private val loginRepository: ISLoginRepository,
-                     private val sessionManager: SessionManager
+class LoginViewModel @ViewModelInject constructor (private val loginRepository: ISLoginRepository,
+                                                   private val sessionManager: SessionManager
 ) : BaseViewModel() {
 
     private val login = MutableLiveData<RemoteCallState<String>>()
@@ -24,7 +29,7 @@ class LoginViewModel(private val loginRepository: ISLoginRepository,
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe ({
-                login.value = if( it.error == null ) {
+                 login.value = if( it.error == null ) {
                     sessionManager.saveToken(it.token)
                     sessionManager.saveUserName(userName)
                     RemoteCallState.success("Success")
@@ -35,4 +40,5 @@ class LoginViewModel(private val loginRepository: ISLoginRepository,
 
         )
     }
+
 }
