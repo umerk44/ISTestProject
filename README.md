@@ -1,4 +1,4 @@
 # ISTestProject
 
- A Simple android application that is implemented for the evaluation process.
+ A Simple android application to demostration modern app development.
 
